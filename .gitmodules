@@ -1,0 +1,3 @@
+[submodule "river-trace"]
+	path = river-trace
+	url = git@github.com:JamesRunnalls/river-trace.git
