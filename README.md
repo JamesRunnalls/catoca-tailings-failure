@@ -20,4 +20,4 @@ This project uses [River Trace](https://github.com/JamesRunnalls/river-trace) in
 The plot below highlights the differences in water turbidity, calculated using Acolite (see SenCast parameters above), 
 for four days, one before the spill and three afterwards. The plot clearly highlights the pollution heading downstream.
 
-![Catoca results](qgis/date comparison.png?raw=true "Title")
+![Catoca results](qgis/date_comparison.png?raw=true "Title")
