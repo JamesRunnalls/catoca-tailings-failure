@@ -54,6 +54,7 @@ for date in dates:
 
     df = pd.DataFrame(list(zip(box, lat_arr, lon_arr, tur_arr, hue_arr)),
                       columns=['Bounding Box', 'Latitude', 'Longitude', 'Turbidity', 'Hue Angle'])
+    df = df.drop_duplicates(subset=['Latitude', 'Longitude'], keep='first').reset_index(drop=True)
     df.to_csv(os.path.join(out_folder, "data_{}.csv".format(date)))
 
 
