@@ -10,10 +10,11 @@ out_folder = "../data/paths"
 water_parameter = "TUR_Dogliotti2015"
 rough_river = "../data/river.geojson"
 direction = "N"
-buffer = 0.001
+buffer = 0.01
 plot = True
 
-inputs = [["ldq", 2], ["ldr", 4], ["mds", 3], ["mdt", 4], ["mdu", 3]]
+# inputs = [["ldq", 2], ["ldr", 4], ["mds", 3], ["mdt", 4], ["mdu", 3]]
+inputs = [["mdu", 4], ["mdv", 1], ["mev", 1], ["mdv", 2], ["mdv", 3], ["mda", 1]]
 dates = ["2021-07-20", "2021-07-25", "2021-07-30", "2021-08-04"]
 
 runs = []
@@ -33,13 +34,16 @@ for run in runs:
         for file in files:
             log("Reading data from file {}".format(file))
             matrix, lat, lon = parse_netcdf(os.path.join(folder, file), water_parameter, "lat", "lon")
-
             log("Create boolean pixel map of water/ non-water pixels")
             boolean = matrix.copy()
             boolean[boolean == 0] = np.nan
             boolean[~np.isnan(boolean)] = True
             boolean[np.isnan(boolean)] = False
             boolean = boolean.astype(bool)
+            if len(boolean[boolean]) == 0:
+                log("All pixels are NaN")
+                continue
+
             if plot:
                 plot_matrix(boolean, title="Water classification plot")
 
