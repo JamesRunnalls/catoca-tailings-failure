@@ -1,0 +1,11 @@
+{
+  "inputs": ["ldq_1", "ldq_2", "ldr_1", "ldr_2", "ldr_3", "ldr_4", "mds_1", "mds_2", "mds_3", "mdt_1", "mdt_2", "mdt_3", "mdt_4", "mdu_1", "mdu_2", "mdu_3"],
+  "dates": ["2021-07-20", "2021-07-25", "2021-07-30", "2021-08-04"],
+  "direction": "N",
+  "buffer": 0.01,
+  "folder_t": "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}/L2ACOLITE",
+  "out_folder": "../data/paths",
+  "water_parameter": "TUR_Dogliotti2015",
+  "rough_river": "../data/river.geojson",
+  "plot": "True"
+}

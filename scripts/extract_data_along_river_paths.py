@@ -1,15 +1,14 @@
 import os
 import json
-import pandas as pd
-import sys
 import numpy as np
-sys.path.append("../river-trace")
-from rivertrace.functions import get_pixel_values, parse_netcdf, smooth, log
+import pandas as pd
+from rivertrace.functions import get_pixel_values, parse_netcdf
 
 folder_t = "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}_{}/L2ACOLITE"
 path_folder = "../data/paths"
 out_folder = "../data/csv"
-dates = ["2021-07-20", "2021-07-25", "2021-07-30", "2021-08-04"]
+group = 4
+dates = ["2021-08-15"]
 
 paths = os.listdir(path_folder)
 paths.sort()
@@ -22,7 +21,7 @@ for date in dates:
             p = json.load(json_file)
         ps = path.split(".")[0].split("_")
         folder = folder_t.format(ps[1], ps[2], date, date)
-        file = list(filter(lambda f: "L2ACOLITE" in f, os.listdir(folder)))[0]
+        file = list(filter(lambda f: "L2ACOLITE" in f and ps[1].upper() in f, os.listdir(folder)))[0]
         tur, lat, lon = parse_netcdf(os.path.join(folder, file), "TUR_Dogliotti2015", "lat", "lon")
         hue, lat, lon = parse_netcdf(os.path.join(folder, file), "hue_angle", "lat", "lon")
         try:
@@ -31,9 +30,9 @@ for date in dates:
             rhow, lat, lon = parse_netcdf(os.path.join(folder, file), "rhow_865", "lat", "lon")
         lat_arr_n = np.array(get_pixel_values(p, lat))
         lon_arr_n = np.array(get_pixel_values(p, lon))
-        tur_arr_n = np.array(get_pixel_values(p, tur, min=0, max=10000, group=1))
-        hue_arr_n = np.array(get_pixel_values(p, hue, group=1))
-        rhow_arr_n = np.array(get_pixel_values(p, rhow, group=1))
+        tur_arr_n = np.array(get_pixel_values(p, tur, min=0, max=10000, group=group))
+        hue_arr_n = np.array(get_pixel_values(p, hue, group=group))
+        rhow_arr_n = np.array(get_pixel_values(p, rhow, group=group))
         box_n = np.array(["{}_{}".format(ps[1], ps[2])] * len(p))
 
         if len(lat_arr) == 0:
