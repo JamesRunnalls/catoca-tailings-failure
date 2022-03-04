@@ -8,14 +8,21 @@ folder_t = "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/outpu
 path_folder = "../data/paths"
 out_folder = "../data/csv"
 group = 4
-dates = ["2021-08-10"]
+dates = ["2021-08-10", "2021-08-15"]
+order = ["mys", "mxs"]
 
 paths = os.listdir(path_folder)
 paths.sort()
 
 for date in dates:
-    dp = [k for k in paths if str(date.split("-")[-1]) in k]
+    dps = [k for k in paths if str(date.split("-")[-1]) in k]
+    dp = []
+    for o in order:
+        for p in dps:
+            if o in p:
+                dp.append(p)
     lat_arr, lon_arr, tur_arr, hue_arr, box = [], [], [], [], []
+
     for path in dp:
         with open(os.path.join(path_folder, path)) as json_file:
             p = json.load(json_file)
@@ -41,9 +48,9 @@ for date in dates:
             dist = 1000000000000
             i_c = 0
             j_c = 0
-            for i in range(1, min(50, len(lat_arr)/2)):
+            for i in range(1, min(100, len(lat_arr)/2)):
                 for j in range(len(lat_arr_n)):
-                    d = ((lat_arr[-i] - lat_arr_n[j])**2+(lat_arr[-i] - lat_arr_n[j])**2)**0.5
+                    d = ((lat_arr[-i] - lat_arr_n[j])**2+(lon_arr[-i] - lon_arr_n[j])**2)**0.5
                     if d < dist:
                         dist = d
                         i_c = i
