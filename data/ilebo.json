@@ -1,0 +1,11 @@
+{
+  "inputs": ["mda_2", "mca_1", "mca_2", "mca_3", "mba_1", "mba_2"],
+  "dates": ["2021-08-17", "2021-08-22"],
+  "direction": "W",
+  "buffer": 0.04,
+  "folder_t": "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}/L2ACOLITE",
+  "out_folder": "../data/paths",
+  "water_parameter": "TUR_Dogliotti2015",
+  "rough_river": "../data/river.geojson",
+  "plot": "True"
+}
