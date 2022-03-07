@@ -4,7 +4,7 @@ import numpy as np
 from rivertrace import trace
 from rivertrace.functions import log, parse_netcdf, plot_matrix, classify_river, plot_matrix_select
 
-config_file = "../data/kwamouth.json"
+config_file = "../data/mushie.json"
 
 with open(config_file) as json_file:
     parameters = json.load(json_file)
