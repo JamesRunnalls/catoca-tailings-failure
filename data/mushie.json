@@ -1,6 +1,6 @@
 {
   "inputs": ["mxs_1", "mxs_2"],
-  "dates": ["2021-08-25"],
+  "dates": ["2021-08-25", "2021-08-30"],
   "direction": "W",
   "buffer": 0.04,
   "folder_t": "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}/L2ACOLITE",

@@ -8,8 +8,8 @@ folder_t = "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/outpu
 path_folder = "../data/paths"
 out_folder = "../data/csv"
 group = 4
-dates = ["2021-08-17", "2021-08-22"]
-order = ["mda", "mca", "mba"]
+dates = ["2021-08-30"]
+order = ["mxs"]
 
 paths = os.listdir(path_folder)
 paths.sort()
