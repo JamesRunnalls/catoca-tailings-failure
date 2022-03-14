@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from functions import get_pixel_values, parse_netcdf
 
-folder_t = "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}_{}/L2ACOLITE"
+folder_t = "/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}_{}/L2ACOLITE"
 path_folder = "../data/paths"
 out_folder = "../data/csv"
 group = 4
@@ -15,7 +15,7 @@ paths = os.listdir(path_folder)
 paths.sort()
 
 for date in dates:
-    dps = [k for k in paths if str(date.split("-")[-1]) in k]
+    dps = [k for k in paths if date in k]
     dp = []
     for o in order:
         for p in dps:
