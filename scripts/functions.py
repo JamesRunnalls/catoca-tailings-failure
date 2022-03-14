@@ -6,7 +6,15 @@ from matplotlib.widgets import LassoSelector
 from matplotlib.path import Path
 from math import radians, cos, sin, asin, sqrt, floor
 from shapely.geometry import LineString, Point, shape
-from rivertrace.functions import log
+from datetime import datetime
+
+
+def log(text, indent=0):
+    text = str(text).split(r"\n")
+    for t in text:
+        if t != "":
+            out = datetime.now().strftime("%H:%M:%S.%f") + (" " * 3 * (indent + 1)) + t
+            print(out)
 
 
 def haversine(lon1, lat1, lon2, lat2):
