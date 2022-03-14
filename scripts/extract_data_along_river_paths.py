@@ -29,7 +29,7 @@ for date in dates:
         ps = path.split(".")[0].split("_")
         folder = folder_t.format(ps[1], ps[2], date, date)
         file = list(filter(lambda f: "L2ACOLITE" in f and ps[1].upper() in f, os.listdir(folder)))[0]
-        tur, lat, lon = parse_netcdf(os.path.join(folder, file), "TUR_Nechad2016_833", "lat", "lon")
+        tur, lat, lon = parse_netcdf(os.path.join(folder, file), "TUR_Dogliotti2015", "lat", "lon")
         hue, lat, lon = parse_netcdf(os.path.join(folder, file), "hue_angle", "lat", "lon")
         try:
             rhow, lat, lon = parse_netcdf(os.path.join(folder, file), "rhow_864", "lat", "lon")
