@@ -2,7 +2,8 @@ import os
 import json
 import numpy as np
 from rivertrace import trace
-from rivertrace.functions import log, parse_netcdf, plot_matrix, classify_river, plot_matrix_select
+from rivertrace.functions import log
+from functions import parse_netcdf, plot_matrix, classify_river, plot_matrix_select
 
 config_file = "../data/mushie.json"
 

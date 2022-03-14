@@ -2,14 +2,14 @@ import os
 import json
 import numpy as np
 import pandas as pd
-from rivertrace.functions import get_pixel_values, parse_netcdf
+from functions import get_pixel_values, parse_netcdf
 
 folder_t = "/media/jamesrunnalls/JamesSSD/Eawag/EawagRS/Sencast/build/DIAS/output_data/Tshikapa_L1C_S2_tshikapa_{}_{}_{}_{}/L2ACOLITE"
 path_folder = "../data/paths"
 out_folder = "../data/csv"
 group = 4
-dates = ["2021-08-30"]
-order = ["mxs"]
+dates = ["2021-07-20", "2021-07-25", "2021-07-30", "2021-08-04", "2021-08-10", "2021-08-15", "2021-08-17", "2021-08-22", "2021-08-25", "2021-08-30"]
+order = ["ldq", "ldr", "mds", "mdt", "mdu", "mdv", "mda", "mca", "mba", "mbb", "mzs", "mys", "mxs"]
 
 paths = os.listdir(path_folder)
 paths.sort()
