@@ -86,7 +86,7 @@ def find_closest_cell(y_arr, x_arr, y, x):
 
 
 def plot_graph(path, file_out, mask):
-    fig, ax = plt.subplots(len(file_out), 1, figsize=(18, 15))
+    fig, ax = plt.subplots(len(file_out), 1, figsize=(18, 10))
     fig.subplots_adjust(hspace=0.5)
     x = range(len(path))
     for i in range(len(file_out)):
@@ -99,7 +99,7 @@ def plot_graph(path, file_out, mask):
 
 
 def plot_matrix(matrix, title=False, cmap='viridis'):
-    fig, ax = plt.subplots(figsize=(18, 15))
+    fig, ax = plt.subplots(figsize=(18, 10))
     ax.imshow(matrix, interpolation='nearest', cmap=cmap)
     if title:
         plt.title(title)
@@ -108,7 +108,7 @@ def plot_matrix(matrix, title=False, cmap='viridis'):
 
 
 def plot_matrix_select(matrix):
-    fig, ax = plt.subplots(figsize=(18, 15))
+    fig, ax = plt.subplots(figsize=(18, 10))
     plot = ax.imshow(matrix, interpolation='nearest', picker=True)
     plt.title("Manually select any cells which you want to remove from water classification.")
 
@@ -127,6 +127,31 @@ def plot_matrix_select(matrix):
     plt.tight_layout()
     plt.show()
     return matrix
+
+
+def plot_point_select(matrix, p, title):
+    output = matrix.copy()
+    output = output.astype(float)
+    output[p[0], p[1]] = 2
+
+    fig, ax = plt.subplots(figsize=(18, 10))
+    plot = ax.imshow(output, interpolation='nearest', picker=True)
+    plt.title(title)
+
+    def onpick(event):
+        output[p[0], p[1]] = 1
+        mouseevent = event.mouseevent
+        p[0] = floor(mouseevent.ydata)
+        p[1] = floor(mouseevent.xdata)
+        output[p[0], p[1]] = 2
+        plot.set_data(output)
+        fig.canvas.draw()
+        fig.canvas.flush_events()
+
+    fig.canvas.mpl_connect('pick_event', onpick)
+    plt.tight_layout()
+    plt.show()
+    return p
 
 
 def parse_netcdf(file, var, lat, lon):

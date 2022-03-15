@@ -3,9 +3,9 @@ import json
 import numpy as np
 from rivertrace import trace
 from rivertrace.functions import log
-from functions import parse_netcdf, plot_matrix, classify_river, plot_matrix_select
+from functions import parse_netcdf, plot_matrix, classify_river, plot_matrix_select, plot_point_select
 
-config_file = "../data/mushie.json"
+config_file = "../data/ilebo.json"
 
 with open(config_file) as json_file:
     parameters = json.load(json_file)
@@ -48,6 +48,11 @@ for run in runs:
                                                      buffer=parameters["buffer"], direction=parameters["direction"])
                 if plot:
                     plot_matrix(boolean, title="River classification plot")
+
+                log("Manually edit start and end points")
+                if plot:
+                    start = plot_point_select(boolean, start, "Edit start")
+                    end = plot_point_select(boolean, end, "Edit end")
 
                 log("Manually remove any incorrectly classified water pixels")
                 if plot:
