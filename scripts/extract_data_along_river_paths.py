@@ -37,7 +37,7 @@ for date in dates:
             rhow, lat, lon = parse_netcdf(os.path.join(folder, file), "rhow_865", "lat", "lon")
         lat_arr_n = np.array(get_pixel_values(p, lat))
         lon_arr_n = np.array(get_pixel_values(p, lon))
-        tur_arr_n = np.array(get_pixel_values(p, tur, min=0, max=10000, group=group))
+        tur_arr_n = np.array(get_pixel_values(p, tur, negative=5800, max=10000, group=group))
         hue_arr_n = np.array(get_pixel_values(p, hue, group=group))
         rhow_arr_n = np.array(get_pixel_values(p, rhow, group=group))
         box_n = np.array(["{}_{}".format(ps[1], ps[2])] * len(p))

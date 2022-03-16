@@ -51,11 +51,13 @@ def smooth(x, window_len=11, window='hanning'):
     return y
 
 
-def get_pixel_values(path, matrix, group=0, max="None", min="None"):
+def get_pixel_values(path, matrix, group=0, max="None", min="None", negative="None"):
     v = []
     for i in range(len(path)):
         if group > 0:
             values = matrix[path[i][0] - group:path[i][0] + group, path[i][1] - group:path[i][1] + group]
+            if negative != "None":
+                values[values < 0] = negative
             if max != "None":
                 values = values[values <= max]
             if min != "None":
